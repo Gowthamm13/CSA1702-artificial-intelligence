@@ -1,0 +1,32 @@
+# Vacuum Cleaner Environment
+# Locations: A and B
+# 0 = clean, 1 = dirty
+
+state = {'A': 1, 'B': 1}  # Both dirty initially
+position = 'A' 
+print("Vacuum Cleaner Problem:\n")
+
+step = 0
+while state['A'] == 1 or state['B'] == 1:
+    print(f"Step {step}: Position={position}, A={state['A']}, B={state['B']}")
+    if state[position] == 1:
+        state[position] = 0  
+    else:
+        
+        position = 'B' if position == 'A' else 'A'
+    step += 1
+
+
+print(f"Step {step}: Position={position}, A={state['A']}, B={state['B']}")
+print("\nAll locations are clean!")
+
+
+OUTPUT
+Vacuum Cleaner Problem:
+
+Step 0: Position=A, A=1, B=1
+Step 1: Position=A, A=0, B=1
+Step 2: Position=B, A=0, B=1
+Step 3: Position=B, A=0, B=0
+
+All locations are clean!
