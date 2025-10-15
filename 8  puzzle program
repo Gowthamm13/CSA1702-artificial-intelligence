@@ -1,0 +1,40 @@
+# 8-Puzzle simple demo (no input)
+puzzle = [[1, 2, 3],
+          [4, 0, 5],
+          [6, 7, 8]]
+
+def show(p):
+    for r in p:
+        print(r)
+    print()
+
+def move(p, a, b, x, y):
+    p[a][b], p[x][y] = p[x][y], p[a][b]
+
+print("Initial Puzzle:")
+show(puzzle)
+
+move(puzzle, 1, 1, 1, 2)
+print("After moving blank right:")
+show(puzzle)
+
+move(puzzle, 1, 2, 2, 2)
+print("After moving blank down:")
+show(puzzle)
+
+
+OUTPUT
+Initial Puzzle:
+[1, 2, 3]
+[4, 0, 5]
+[6, 7, 8]
+
+After moving blank right:
+[1, 2, 3]
+[4, 5, 0]
+[6, 7, 8]
+
+After moving blank down:
+[1, 2, 3]
+[4, 5, 8]
+[6, 7, 0]
