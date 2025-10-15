@@ -1,0 +1,37 @@
+# Simple Missionaries and Cannibals demonstration
+# State: (M_left, C_left, Boat) Boat=1: left, 0: right
+
+states = [(3,3,1)]
+solution = [states[0]]
+
+while states[-1] != (0,0,0):
+    m, c, b = states[-1]
+    if b == 1:  # boat on left
+        if m > 0:
+            m2 = m - 1
+            c2 = c if c <= m2 else m2
+        else:
+            m2, c2 = m, c
+    else:  # boat on right
+        m2 = m + 1 if m < 3 else m
+        c2 = c + 1 if c < 3 else c
+    b2 = 1 - b
+    states.append((m2, c2, b2))
+    solution.append(states[-1])
+
+print("Missionaries and Cannibals Solution:\n")
+for step, (m, c, b) in enumerate(solution):
+    side = "Left" if b else "Right"
+    print(f"Step {step}: M={m}, C={c}, Boat={side}")
+
+
+OUTPUT
+Missionaries and Cannibals Solution:
+
+Step 0: M=3, C=3, Boat=Left
+Step 1: M=2, C=2, Boat=Right
+Step 2: M=3, C=3, Boat=Left
+Step 3: M=2, C=2, Boat=Right
+Step 4: M=3, C=3, Boat=Left
+...
+Step n: M=0, C=0, Boat=Right
